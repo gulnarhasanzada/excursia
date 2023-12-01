@@ -2,6 +2,7 @@ const express =  require("express");
 const {body} = require('express-validator');
 const listingController =  require("../controllers/listing");
 const validator = require('../util/validator');
+const isAuth = require("../middleware/is-auth");
 
 const router = express.Router();
 
@@ -9,13 +10,13 @@ const router = express.Router();
 router.get("", listingController.getListings)
 
 //POST /listings/ create new listing
-router.post("", validator.validateCreateListing,listingController.createListing)
+router.post("", isAuth, validator.validateCreateListing,listingController.createListing)
 
 //GET /listings/:id get a listing by id
 router.get("/listing/:listingId", listingController.getListing)
 
 //PUT /listings/:id update a listing by id
-router.put("/listing/:listingId", listingController.updateListing)
+router.put("/listing/:listingId",isAuth, listingController.updateListing)
 
 module.exports = router;
 
