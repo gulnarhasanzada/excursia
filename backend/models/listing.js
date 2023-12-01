@@ -30,12 +30,34 @@ const listingSchema = new Schema({
           },
         }
     },
+    price: {
+        nightly: {
+            type: Number,
+            required: true
+        },
+        weekly: Number,
+        monthly: Number
+    },
+    capacity: {
+        guests: {
+            type: Number,
+            required: true
+        },
+        bedrooms: {
+            type: Number,
+            required: true
+        },
+        bathrooms: {
+            type: Number,
+            required: true
+        },
+    },
     amenities:{
-        type: Array,
+        type: [String],
         required: true
     },
     images:{
-        type: String
+        type: [String]
     },
     host: {
         type: Number,
