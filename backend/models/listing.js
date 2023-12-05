@@ -60,7 +60,8 @@ const listingSchema = new Schema({
         type: [String]
     },
     host: {
-        type: Number,
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 },

@@ -18,5 +18,8 @@ router.get("/listing/:listingId", listingController.getListing)
 //PUT /listings/:id update a listing by id
 router.put("/listing/:listingId",isAuth, listingController.updateListing)
 
+//DELETE /listings/:id delete listing by id
+router.delete("/listing/:listingId",isAuth, listingController.deleteListing)
+
 module.exports = router;
 
