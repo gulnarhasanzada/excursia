@@ -2,6 +2,8 @@ import ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
 import Card from "../card/card";
 import "./modal.css"
+import { IconButton } from "@mui/material";
+import { MdOutlineClose } from "react-icons/md";
 
 const Backdrop = (props:any)=>{
     const onCloseBackdrop = ()=>{
@@ -16,7 +18,7 @@ const OverLay = (props: any)=>{
     }
 
     return (<Card>
-                <button className="close-page" onClick={onCloseBackdrop}>close</button>
+                <MdOutlineClose  onClick={onCloseBackdrop} className="close-icon" size="1.5em"/>
                 {props.children}
             </Card>)   
 } 

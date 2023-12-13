@@ -8,11 +8,16 @@
     background: rgba(0, 0, 0, 0.50);
 }
 
-.close-page{
-    width:15px;
-    border: none;
-    background-color: none;
+#overlay-root{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index:11;
+}
+
+.close-icon{
     position: absolute;
     right: 30px;
-    
+    cursor: pointer;
 }
