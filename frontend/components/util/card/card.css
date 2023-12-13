@@ -1,0 +1,18 @@
+.card{
+    position: fixed;
+    top: 20vh;
+    width: 80%;
+    left: 10%;
+    z-index: 100;
+    overflow: hidden;
+    -webkit-box-shadow: 2px 2px 7px 2px #4A4A4A; 
+    box-shadow: 2px 2px 7px 2px #4A4A4A;
+    padding:30px;
+}
+
+@media (min-width: 768px) {
+    .card {
+      left: calc(50% - 20rem);
+      width: 40rem;
+    }
+  }
