@@ -15,6 +15,12 @@ exports.signup = async(req, res, next)=>{
             lastName: req.body.lastName,
             phoneNumber: req.body.phoneNumber
         })
+        const foundUser = await User.findOne({email: req.body.email.trim()});
+        if(foundUser){
+            const error = new Error('Email address already exists!');
+            error.statusCode = 400;
+            throw error;
+        }
 
         const createdUser = await user.save();
         res.status(201).json({

@@ -32,14 +32,10 @@ const ProfileMenu = () => {
 
     const onHidePageHandler = ()=>{
       setViewSignup(false);
-  }
+    }
 
     return ( <>
-        {viewSignup && 
-        <Modal onHidePage = {onHidePageHandler}>
-          <Signup/>
-        </Modal>}
-        
+        {viewSignup && <Signup closeSignup ={onHidePageHandler}/>}
         <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Tooltip title="Account settings">
             <IconButton

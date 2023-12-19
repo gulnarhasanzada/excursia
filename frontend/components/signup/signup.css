@@ -1,0 +1,10 @@
+@import '../../styles/colors.module.css';
+
+.input-field{
+    width: 100%;
+    margin: 30px 0;
+}
+
+#outlined-required-helper-text, #standard-basic-helper-text{
+    color: var(--primary-red)
+}

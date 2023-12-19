@@ -1,6 +1,6 @@
 .card{
     position: fixed;
-    top: 20vh;
+    top: 10vh;
     width: 80%;
     left: 10%;
     z-index: 100;
@@ -16,3 +16,5 @@
       width: 40rem;
     }
   }
+
+ 
