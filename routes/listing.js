@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("", listingController.getListings)
 
 //POST /listings/ create new listing
-router.post("", isAuth, validator.validateCreateListing,listingController.createListing)
+router.post("", isAuth, listingController.createListing)
 
 //GET /listings/:id get a listing by id
 router.get("/listing/:listingId", listingController.getListing)

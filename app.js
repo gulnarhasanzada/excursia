@@ -52,7 +52,7 @@ app.use('/conversations', listingRoutes);
 app.use((error, req, res,next)=>{
     const status = error.statusCode || 500;
     res.status(status).json({
-        message: error.message,
+        error: error.message,
         data: error.data
     })
 })
