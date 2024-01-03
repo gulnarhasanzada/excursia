@@ -8,34 +8,32 @@ require('dotenv').config({path: '../config/keys.env'})
 exports.signup = async(req, res, next)=>{
     validator.validate(req);
     let errors = {}
+    if(formValidator.validateText("Firstname", req.body.firstName).length > 0){
+        errors.firstName = formValidator.validateText("Firstname", req.body.firstName);
+    }
+
+    if(formValidator.validateText("Lastname", req.body.lastName).length > 0){
+        errors.lastName = formValidator.validateText("Lastname", req.body.lastName);
+    }
+    
+    if(formValidator.validateEmail(req.body.email).length > 0){
+        errors.email = formValidator.validateEmail(req.body.email);
+    }else{
+        const foundUser = await User.findOne({email: req.body.email.trim()});
+        if(foundUser){
+            errors.email= ["Email address already exists!"];
+        }
+    }
+    
+    if(formValidator.validatePassword(req.body.password).length > 0){
+        errors.password = formValidator.validatePassword(req.body.password);
+    }
     try {
         hashedPassword = await bcrypt.hash(req.body.password, 12);
-        if(formValidator.validateText("firstName", req.body.firstName).length > 0){
-            errors.firstName = formValidator.validateText("firstName", req.body.firstName);
-        }
-
-        if(formValidator.validateText("lasstName", req.body.lastName).length > 0){
-            errors.lastName = formValidator.validateText("lastName", req.body.lastName);
-        }
         
-        if(formValidator.validateEmail(req.body.email).length > 0){
-            errors.email = formValidator.validateEmail(req.body.email);
-        }else{
-            const foundUser = await User.findOne({email: req.body.email.trim()});
-            if(foundUser){
-                errors.email= "Email address already exists!";
-            }
-        }
-        
-        if(formValidator.validatePassword(req.body.password).length > 0){
-            errors.password = formValidator.validatePassword(req.body.password);
-        }
-
-        
-
         if(Object.keys(errors).length > 0){
-            res.status(400).json({
-                message: 'Error',
+            res.status(422).json({
+                message: 'Validation error(s)',
                 errors: errors
             })
         }else{
@@ -47,7 +45,6 @@ exports.signup = async(req, res, next)=>{
                 phoneNumber: req.body.phoneNumber
             })
             
-    
             const createdUser = await user.save();
             res.status(201).json({
                 message: 'User created!',
@@ -89,7 +86,6 @@ exports.login = async (req, res, next)=>{
     } catch (error) {
         next(error);
     }
-
 }
 
 exports.getUser = (req, res, next)=>{

@@ -6,11 +6,13 @@ exports.validateText = (name, text, len=2) => {
     if (!text.trim()) {
         errors.push(name + " is required!");
     }
-    else if (text.trim() <= len) {
-        errors.push(name + " must be at least " + len + " characters long!");
-    }
-    if (/[^a-zA-Z]/.test(text.trim())) {
-        errors.push(name + " cannot have any special characters!");
+    else {
+        if (text.trim().length < len) {
+            errors.push(name + " must be at least " + len + " characters long!");
+        }
+        if (/[^a-zA-Z]/.test(text.trim())) {
+            errors.push(name + " cannot have any special characters!");
+        }
     }
     
     return errors;
@@ -31,6 +33,9 @@ exports.validatePassword = (password) => {
     if (!password.trim()) {
         errors.push("Password is required!");
     }else {
+        if (password.trim().length < 6) {
+            errors.push("Password must be at least 6 characters long!");
+        }
         if (!/[A-Z]/.test(password)) {
             errors.push("Password must contain at least one uppercase letter");
         }
@@ -40,5 +45,3 @@ exports.validatePassword = (password) => {
     }
     return errors;
 }
-
-
