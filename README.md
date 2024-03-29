@@ -1,7 +1,7 @@
 # Excursia
 Vacation Homes &amp; Condo Rentals -Excursia
 
-Open [excursia-backend-rl4y.vercel.app](excursia-backend-rl4y.vercel.app) to view it in the browser.
+Open [excursia-backend-rl4y.vercel.app](https://excursia-backend-rl4y.vercel.app/listings) to view it in the browser.
 
 ## End-points:
 
