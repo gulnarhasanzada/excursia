@@ -64,5 +64,5 @@ mongoose.connect(process.env.MONGO_DB_CONNECTION)
 .catch(err=> {
     console.log(err)
 })
-
+module.exports = app;
 
