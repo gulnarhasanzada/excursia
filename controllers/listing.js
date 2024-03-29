@@ -42,6 +42,7 @@ exports.createListing = async (req,res, next)=>{
     const listing = new Listing({
         title: req.body.title,
         description: req.body.description,
+        category: req.body.category,
         location: {
             city: req.body.location.city,
             country: req.body.location.country,
@@ -88,6 +89,7 @@ exports.updateListing = async (req,res, next)=>{
     const listing = new Listing({
         title: req.body.title,
         description: req.body.description,
+        category: req.body.category,
         location: {
             city: req.body.location.city,
             country: req.body.location.country,
